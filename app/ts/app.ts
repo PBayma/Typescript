@@ -1,4 +1,4 @@
-import { NegociacaoController } from './controllers/NegociacaoController';
+import { NegociacaoController } from './controllers/index';
 
 const controller = new NegociacaoController();
 
@@ -6,4 +6,4 @@ const controller = new NegociacaoController();
 //tsd(TypeScript Definition)
 
 $('.form')
-    .addEventListener('submit', controller.adiciona.bind(controller));
+    .submit(controller.adiciona.bind(controller));

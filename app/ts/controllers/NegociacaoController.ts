@@ -1,10 +1,10 @@
 //import Views
-import { NegociacoesView } from '../views/NegociacaoView';
-import { MensagemView } from '../views/MensagemView';
+//Usando barrel para diminuir importarções
+import * as view from '../views/index';
 
 //import models
-import { Negociacoes } from '../models/Negociacoes';
-import { Negociacao } from '../models/Negociacao';
+//Usando barrel para diminuir importaões outro jeito
+import { Negociacoes, Negociacao } from '../models/index';
 
 export class NegociacaoController{
 
@@ -12,8 +12,8 @@ export class NegociacaoController{
     private _inputQuantidade: JQuery;
     private _inputValor: JQuery;
     private _negociacoes = new Negociacoes()
-    private _negociacoesView = new NegociacoesView('#negociacoesView');
-    private _mensagemView = new MensagemView('#mensagemView');
+    private _negociacoesView = new view.NegociacoesView('#negociacoesView');
+    private _mensagemView = new view.MensagemView('#mensagemView');
 
 
     constructor(){
@@ -29,9 +29,9 @@ export class NegociacaoController{
         event.preventDefault();
 
         const negociacao = new Negociacao(
-            new Date(this._inputData.value.replace(/-/g, ',')),
-            parseInt(this._inputQuantidade.value),
-            parseFloat(this._inputValor.value),
+            new Date(this._inputData.val().replace(/-/g, ',')),
+            parseInt(this._inputQuantidade.val()),
+            parseFloat(this._inputValor.val()),
         )
 
         this._negociacoes.adiciona(negociacao);
